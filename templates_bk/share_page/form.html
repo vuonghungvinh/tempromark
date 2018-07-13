@@ -1,0 +1,49 @@
+
+<div class="popup-inner">
+<a class="popup-close" href="#"><img src="{% static 'common/images/close.png' %}" /></a>
+
+<h2>Email this page</h2>
+<hr />
+
+
+{% if form.errors %}
+<p class="form-errors">
+Please fill in all of the required fields, as indicated below.
+</p>
+{% endif %}
+
+<form class="share-form clearfix" method="post" action="{% url 'share' %}">
+{% csrf_token %}
+<ul>
+
+<li>
+{{ form.from_address.errors }}
+<label for="id_{{ form.from_address.name }}">{{ form.from_address.label }}:</label>
+{{ form.from_address }}
+</li>
+
+<li>
+{{ form.to_address.errors }}
+<label for="id_{{ form.to_address.name }}">{{ form.to_address.label }}:</label>
+{{ form.to_address }}
+</li>
+
+<li>
+{{ form.subject.errors }}
+<label for="id_{{ form.subject.name }}">{{ form.subject.label }}:</label>
+{{ form.subject }}
+</li>
+
+<li>
+{{ form.body.errors }}
+<label for="id_{{ form.body.name }}">{{ form.body.label }}:</label>
+{{ form.body }}
+</li>
+
+<li>
+<input type="submit" value="Send" class="button large" />
+</li>
+</ul>
+</form>
+
+</div>

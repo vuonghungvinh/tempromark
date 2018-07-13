@@ -1,0 +1,259 @@
+
+/* Reset webkit search input styles */
+input[type=search] {
+    -webkit-appearance: none;
+    outline: none;
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+    display: none;
+}
+
+
+/* Field errors */
+.error {
+    background: #faeda2;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: #b91701;
+}
+
+
+.errorlist {
+    padding: 0px;
+    list-style: none;
+    margin: 0px;
+}
+
+.errorlist > li {
+    background: ;
+    border: none;
+    font-style: italic;
+    color: #bd3434;
+    margin: 5px 0px;
+}
+
+/* Form Defaults */
+form fieldset
+{
+	padding: 35px 50px;
+	border-radius: 10px;
+	border: 1px solid #BBBBBB;
+}
+
+
+/* Top level inputs & labels */
+form ul
+{
+    padding-left: 0;
+    list-style: none outside none;
+}
+
+form ul li
+{
+
+}
+
+form label
+{
+	float: left;
+	width: 20%;
+    min-width: 80px;
+	display: block;
+	margin: 4px 0px;
+	color: #333333;
+}
+
+form input
+{
+	display: block;
+	border-radius: 3px;
+	border: 1px solid #BBBBBB;
+	margin: 6px 0px;
+}
+
+form textarea
+{
+	border: 1px solid #BBBBBB;
+	border-radius: 3px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    border: 1px solid #999999;
+    padding: 1%;
+    width: 350px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    border: 1px solid #98C6F2;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) inset, 0 0 6px rgba(54, 137, 219, 0.4);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) inset, 0 0 6px rgba(54, 137, 219, 0.4);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) inset, 0 0 6px rgba(54, 137, 219, 0.4);
+    outline: none;
+}
+
+/* Second level inputs */
+form ul li ul li
+{
+    clear: none;
+}
+
+
+/*************************************
+ * CMS Page Styles
+ * **********************************/
+
+form#cms-page input[type="text"],
+form#cms-page input[type="email"],
+form#cms-page textarea {
+    width: 98%;
+}
+
+form#cms-page input#id_title {
+    font: 400 36px 'Source Sans Pro', 'Arial', 'Helvetica', sans-serif;
+    color: #d81e05;
+}
+
+form#cms-page textarea#id_intro {
+    font: 600 20px 'Source Sans Pro', 'Arial', 'Helvetica', sans-serif;
+    margin-bottom: 10px;
+}
+
+form#cms-page p {
+    font-size: 12px !important;
+}
+
+
+ul.image-formset {
+
+}
+
+ul.image-formset li {
+    height: 295px;
+    width: 30%;
+    float: left;
+    margin: 0 1% 1% 0;
+    padding: 1%;
+    background: #eee;
+}
+
+ul.image-formset li label {
+    float: none;
+    width: auto;
+}
+
+ul.image-formset li label.image-delete-label {
+    float: left;
+}
+
+ul.image-formset li input[type="checkbox"] {
+    float: left;
+    margin: 5px 0 0 5px;
+}
+
+ul.image-formset li input {
+    float: none;
+    border: 0;
+    display: inline;
+}
+
+ul.image-formset li .image-container {
+    height: 210px;
+    text-align: center;
+    background: #bebebe;
+}
+
+ul.image-formset li .image-container h2 {
+    padding-top: 90px;
+}
+
+ul.image-formset li .image-container img {
+    width: 100%;
+    height: auto;
+}
+
+
+/* Share form styles */
+
+form.share-form textarea {
+    height: 110px;
+}
+
+form.share-form li {
+    clear: left;
+}
+
+form.share-form label {
+    width: 17%;
+}
+
+form.share-form input[type="text"],
+form.share-form input[type="email"],
+form.share-form textarea {
+    width: 80.5%;
+    padding: 1%;
+}
+
+form.share-form input[type="submit"] {
+    float: right;
+    margin-top: 10px;
+}
+
+/* tweak the placeholder text! */
+
+form.share-form ::-webkit-input-placeholder {
+    color: #999 !important;
+    font-size: 12px;
+}
+
+form.share-form :moz-placeholder {
+    color: #999 !important;
+    font-size: 12px;
+}
+
+form.share-form ::moz-placeholder {
+    color: #999 !important;
+    font-size: 12px;
+}
+
+form.share-form :-ms-input-placeholder {
+    color: #999 !important;
+    font-size: 12px;
+}
+
+
+/* Placeholder styles */
+
+::-webkit-input-placeholder {
+    color: #333333 !important;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: #333333;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    color: #333333;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+}
+
+:-ms-input-placeholder {
+    color: #333333;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+}
+
+
+

@@ -1,0 +1,71 @@
+{% extends "catalogue/layout/base.html" %}
+{% load animal3_thumbnail %}
+
+
+{% block html_head %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'cycle/cycle.css' %}" />
+<script type="text/javascript" src="{% static 'cycle/cycle.min.js' %}"></script>
+{% endblock html_head %}
+
+
+{% block breadcrumbs %}
+<h4><a href="{% url 'catalogue-index' %}">Products</a> / {{category.name }}</h4>
+{% endblock breadcrumbs %}
+
+
+{% block sub-navigation %}
+<h3>{{ category.name }}</h3>
+{% include 'catalogue/snippets/navigation.html' %}
+{% endblock sub-navigation %}
+
+
+{% block page %}
+
+<article>
+<h1>{% block title %}{{category.name }}{% endblock title %}</h1>
+
+{% if images %}
+
+<div id="carousel">
+<ol>
+{% for image in images %}
+    <li>{% thumbnail image.image 'category-carousel' %}</li>
+{% endfor %}
+</ol>
+<div class="carousel-navigation"></div>
+</div>
+
+<script type="text/javascript">
+
+(function () {
+
+    function init() {
+        $('#carousel').cycle({
+            fx: 'fade',
+            speed: 1000,
+            timeout: 10000,
+            pauseOnHover: true,
+            random: false,
+            pager: '.carousel-navigation',
+            pagerActiveClass: 'selected',
+            pagerTemplate: '<a href="#"></a>',
+            next: '.carousel-next',
+            prev: '.carousel-prev',
+            slides: '> ol > li'
+        });
+    }
+
+    jQuery(init);
+
+}());
+
+</script>
+
+{% endif %}
+
+{{category.description | safe }}
+
+</article>
+
+{% endblock page %}

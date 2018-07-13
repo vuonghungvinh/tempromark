@@ -1,0 +1,25 @@
+{% extends "common/base.html" %}
+
+
+{% block breadcrumbs %}
+<h4>project gallery</h4>
+{% endblock breadcrumbs %}
+
+
+{% block sub-navigation %}
+<h3>Project Gallery</h3>
+<ul>
+    <li><a href="/">US Projects</a></li>
+    <li><a href="/">International Projects</a></li>
+</ul>
+{% endblock sub-navigation %}
+
+
+{% block page %}
+
+<article>
+<h1>Gallery</h1>
+{% lorem 3 p %}
+</article>
+
+{% endblock page %}

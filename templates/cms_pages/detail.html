@@ -1,0 +1,44 @@
+{% extends "cms_pages/layout/base.html" %}
+{% load animal3_thumbnail %}
+
+
+{% block meta_description %}
+<meta name="description" content="{{ page.meta_description }}" />
+{% endblock meta_description %}
+
+
+{% block title %}
+{{ page.meta_title }}
+{% endblock title%}
+
+
+{% block page %}
+
+<article>
+
+{% if images %}
+<ul class="page-images">
+{% for image in images %}
+    <li>
+    {% if image.url %}
+        <a href="{{ image.url }}">{% thumbnail image.image 'large' %}</a>
+    {% else %}
+        {% thumbnail image.image 'large' %}
+    {% endif %}
+    </li>
+{% endfor %}
+</ul>
+{% endif %}
+
+<h1>{{ page.name }}</h1>
+<section class="page-text">
+{{ page.body|safe }}
+</section>
+
+
+</article>
+
+
+{% endblock page %}
+
+

@@ -1,0 +1,28 @@
+{% load animal3_thumbnail %}
+
+
+<div class="carousel">
+
+<div class="carousel-sliders">
+<a href="#" class="controls left" data-action="slide-left"><span>&lsaquo;</span></a>
+<a href="#" class="controls right" data-action="slide-right"><span>&rsaquo;</span></a>
+</div>
+
+<div class="carousel-stage" data-autoplay="false" data-time="3000">
+
+<ol>
+{% for p in products %}
+    {% if p.cover_image %}
+        <li>
+        <a href="{{ p.get_absolute_url }}">
+        {% thumbnail p.cover_image 'product-carousel' alt=p.name %}
+        <p>{{ p.name }}</p>
+        </a>
+        </li>
+    {% endif %}
+{% endfor %}
+</ol>
+
+</div><!-- /carousel-stage -->
+
+</div><!-- /carousel -->

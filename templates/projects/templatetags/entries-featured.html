@@ -1,0 +1,11 @@
+{% load blog_tags %}
+
+{% for entry in entries %}
+    <li>
+        {% blog_entry_featured entry %}
+    </li>
+{% empty %}
+    <li>
+        <em>No featured entries.</em>
+    </li>
+{% endfor %}

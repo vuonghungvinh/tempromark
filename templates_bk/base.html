@@ -1,0 +1,136 @@
+
+{% load share_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>{% block title %}{{ META_NAME }}{% endblock %}</title>
+
+{% block html_head %}
+{# Metadata #}
+<meta name="author" content="Messiah Studio (http://messiah.co.nz/)" />
+<meta name="copyright" content="{{ META_COPYRIGHT }}" />
+{% block meta_description %}
+<meta name="description" content="{{ META_DESCRIPTION }}" />
+{% endblock meta_description %}
+<meta name="keywords" content="{{ META_KEYWORDS }}" />
+<link rel="icon" href="{% static 'common/favicon.png' %}" sizes="16x16" type="image/png" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{# CSS #}
+<link rel="stylesheet" href="{% static 'animal3/normalize.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'common/common.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'common/forms.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'common/buttons.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'animal3/animal3.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'common/media-queries.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'common/print.css' %}" type="text/css" media="print" />
+
+{# Icons for mobile devices... #}
+<link rel="apple-touch-icon" href="{% static 'common/apple-touch-icon-57x57-precomposed.png' %}" />
+<link rel="apple-touch-icon" sizes="72x72" href="{% static 'common/apple-touch-icon-72x72-precomposed.png' %}" />
+<link rel="apple-touch-icon" sizes="114x114" href="{% static 'common/apple-touch-icon-114x114-precomposed.png' %}" />
+<link rel="apple-touch-icon" sizes="144x144" href="{% static 'common/apple-touch-icon-144x144-precomposed.png' %}" />
+
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
+
+{# JavaScript #}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'animal3/animal3.js' %}"></script>
+<script type="text/javascript" src="{% static 'common/popup.js' %}"></script>
+<script type="text/javascript" src="{% static 'mobile/jquery.mobile.touch-events.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'mobile/is-mobile.js' %}"></script>
+
+{# IE8 work-arounds #}
+<!--[if lt IE 9]>
+<script src="{% static 'animal3/html5-shiv.min.js' %}"></script>
+<script src="{% static 'animal3/html5-forms.js' %}"></script>
+<link rel="stylesheet" href="{% static 'common/ie8-tweaks.css' %}" type="text/css" />
+<![endif]-->
+
+{% endblock html_head %}
+
+</head>
+
+
+<body>
+
+<div id="wrap">
+
+<header id="header">
+{% block header %}
+{% endblock header %}
+
+
+{% block navigation %}
+{% endblock navigation %}
+</header>
+
+
+<section id="breadcrumbs">
+{% block breadcrumbs %}
+{% endblock breadcrumbs %}
+
+
+{% block share %}
+<h4 class="share" class="no-print">
+<a href="javascript:window.print()" class="no-print"><img src="{% static 'common/icons/print.png' %}" />print this page</a>
+<a class="popup-open no-print" data-target="share-form" href="#"><img src="{% static 'common/icons/email.png' %}" />email this page</a>
+</h4>
+<br style="clear:both;" />
+{% endblock share %}
+</section>
+
+
+{% block messages %}
+    {% for message in messages %}
+    <div class="message {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+{% endblock messages %}
+
+
+<aside id="sub-nav" class="no-print">
+<nav>
+{% block sub-navigation %}
+{% endblock sub-navigation %}
+</nav>
+</aside>
+
+
+<section id="content">
+{% block page %}
+    <p><em>Empty page block</em></p>
+{% endblock page %}
+</section><!-- /content -->
+
+
+{% block share-form %}
+<div class="popup hidden" id="share-form">
+{% share_form request %}
+</div>
+{% endblock share-form %}
+
+
+<br style="clear:both;" />
+
+
+{% block footer %}
+{% endblock footer %}
+
+
+</div><!-- /wrap -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-71440103-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+
+
+</html>

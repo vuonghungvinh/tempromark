@@ -1,0 +1,93 @@
+
+.no-print,
+.button {
+    display: none !important;
+}
+
+.print-block {
+    display: block;
+}
+
+.print-inline {
+    display: inline;
+}
+
+body {
+    background: white;
+    color: black;
+    margin: 0px;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    color: black;
+    text-decoration: none;
+}
+
+/* structure */
+
+div#wrap {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+section#content {
+    width: 90.2%;
+}
+
+/* header */
+
+header#header {
+    border-bottom: 1px solid #eee;
+}
+
+header#header hgroup {
+    height: auto;
+}
+
+header#header hgroup h1 {
+    float: none;
+    margin-bottom: 10px;
+}
+
+header#header hgroup h2 {
+    margin-bottom: 10px;
+}
+
+/* breadcrumbs... */
+
+section#breadcrumbs h4 {
+    float: none;
+    margin-top: 20px;
+}
+
+/* object list */
+
+ul.object-list li {
+    margin-right: 1.85%;
+}
+
+ul.object-list li a img {
+    width: 100%;
+    height: auto;
+}
+
+/* product/project-detail pages */
+
+aside#related {
+    display: none;
+}
+
+section#content article.product-detail,
+section#content article.project-detail {
+    width: auto;
+}
+
+section#content article.product-detail div.description,
+section#content article.project-detail div.description {
+    width: auto;
+    float: none;
+}

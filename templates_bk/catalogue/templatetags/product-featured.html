@@ -1,0 +1,14 @@
+{% load animal3_thumbnail %}
+
+
+<a href="{{ product.get_absolute_url }}">
+{% if product.cover_image %}
+    {% thumbnail product.cover_image 'product-thumbnail' %}
+{% endif %}
+<h4>{{ product.name }}</h4>
+<p>
+{{ product.description|striptags|truncatewords:25 }}
+</p>
+</a>
+
+

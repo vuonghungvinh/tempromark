@@ -1,0 +1,50 @@
+{% load catalogue_tags %}
+
+
+<ul>
+
+{# Overview #}
+<li><a href="{% url 'catalogue-category-detail' slug=category.slug pk=category.pk %}">Overview</a></li>
+
+
+{# Each sub-category #}
+{% for c in sub_categories %}
+    <li>
+    <a {% if sub_category.pk == c.pk %}class="selected dropdown-heading"{% endif %} href="{% url 'catalogue-sub-category-detail' category.slug c.slug c.pk %}">{{ c.name }}</a>
+
+    {% if sub_category.pk == c.pk %}
+        <ul>
+        {% for g in groups %}
+            <li>
+            <a {% if g.id == group.id %}class="selected"{% endif %} href="{% url 'catalogue-group' category.slug c.slug c.pk g.slug %}#{{ g.pk }}">{{ g.name }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    </li>
+{% endfor %}
+
+
+{# Colour Options #}
+<li><a href="{% url 'catalogue-category-colours' category.slug category.pk %}">Color Options</a></li>
+
+
+{# Document Sets #}
+{% catalogue_document_sets category as sets %}
+{% for set in sets %}
+    <li>
+    <span class="set-title">{{ set.name }}</span>
+
+    <ul>
+    {% for document in set.documents.all %}
+        <li><a href="{{ document.get_absolute_url }}">{{ document.name }}</a></li>
+    {% endfor %}
+    </ul>
+
+    </li>
+{% empty %}
+    <!-- No document sets found -->
+{% endfor %}
+
+</ul>

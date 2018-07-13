@@ -1,0 +1,25 @@
+{% load animal3_thumbnail %}
+
+<ul>
+{% for category in categories %}
+    <li>
+
+    {% if category.cover_image %}
+        <a href="{% url 'catalogue-category-detail' category.slug category.pk %}" class="category-nav-image">
+            {% thumbnail category.cover_image 'product-nav-thumbnail' %}
+        </a>
+    {% endif %}
+
+    <h3><a href="{% url 'catalogue-category-detail' category.slug category.pk %}">{{ category.name }}</a></h3>
+
+    {% if category.sub_categories %}
+        {% for sub_category in category.sub_categories.all %}
+            <p><a href="{% url 'catalogue-sub-category-detail' category.slug sub_category.slug sub_category.pk %}">{{ sub_category.name }}</a></p>
+        {% endfor %}
+    {% endif %}
+
+    </li>
+{% empty %}
+    <li><em>No Categories.</em></li>
+{% endfor %}
+</ul>

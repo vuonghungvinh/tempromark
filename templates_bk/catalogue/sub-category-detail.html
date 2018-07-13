@@ -1,0 +1,45 @@
+{% extends "catalogue/layout/base.html" %}
+{% load animal3_thumbnail %}
+
+
+{% block breadcrumbs %}
+<h4>
+<a href="{% url 'catalogue-index' %}">Products</a> /
+<a href="{% url 'catalogue-category-detail' category.slug category.pk %}">{{ category.name }}</a> /
+{{ sub_category.name }}
+</h4>
+{% endblock breadcrumbs %}
+
+
+{% block sub-navigation %}
+<h3>{{ category.name }}</h3>
+{% include 'catalogue/snippets/navigation.html' %}
+{% endblock sub-navigation %}
+
+
+{% block page %}
+
+
+<article>
+<h1>{% block title %}{{ sub_category.name }}{% endblock title %}</h1>
+{{ sub_category.description|safe }}
+
+{% for key, objects in data.items %}
+    {% for product in objects %}
+        {% if forloop.counter0 == 0 %}
+            <a id="{{ product.pk }}"></a>
+            <h2>{{ product.name }}</h2>
+            <ul class="object-list clearfix">
+        {% else %}
+            <li>
+            {% include 'catalogue/snippets/product-summary.html' %}
+            </li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+{% endfor %}
+
+</article>
+
+
+{% endblock page %}

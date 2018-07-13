@@ -1,0 +1,22 @@
+{% extends "common/base.html" %}
+{% load cms_tags %}
+
+
+{% block title %}Project Gallery{% endblock title %}
+
+
+{% block breadcrumbs %}
+<h4>
+    {% if section == 'support' %}product support{% endif %}
+    {% if section == 'about' %}about{% endif %} / {{ page.name }}
+</h4>
+{% endblock breadcrumbs %}
+
+
+{% block sub-navigation %}
+{% if section == 'support' %}<h3>Product Support</h3>{% endif %}
+{% if section == 'about' %}<h3>About</h3>{% endif %}
+<ul>
+{% section_page_navigation section %}
+</ul>
+{% endblock sub-navigation %}

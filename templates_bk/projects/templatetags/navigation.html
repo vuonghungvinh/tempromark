@@ -1,0 +1,8 @@
+
+<ul>
+{% for category in categories %}
+    <li><a href="{% url 'project_category_detail' category.slug category.pk %}">{{ category.name }}</a></li>
+{% empty %}
+    <li><em>No Projects.</em></li>
+{% endfor %}
+</ul>

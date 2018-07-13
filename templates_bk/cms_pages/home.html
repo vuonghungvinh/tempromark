@@ -1,0 +1,162 @@
+{% extends "common/base.html" %}
+{% load blog_tags %}
+{% load catalogue_tags %}
+{% load animal3_thumbnail %}
+
+
+{% block html_head %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'common/home.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'carousel/carousel.css' %}" />
+<script type="text/javascript" src="{% static 'carousel/carousel.js' %}"></script>
+
+<link rel="stylesheet" type="text/css" href="{% static 'cycle/cycle.css' %}" />
+<script type="text/javascript" src="{% static 'cycle/cycle.min.js' %}"></script>
+
+{% block meta_description %}
+<meta name="description" content="{{ page.meta_description }}" />
+{% endblock meta_description %}
+
+{% endblock html_head %}
+
+{% block title %}
+{{ page.meta_title }}
+{% endblock title%}
+
+{% block breadcrumbs %}
+
+
+<div id="carousel">
+<ol>
+{% for image in images %}
+    <li>
+    {% if image.url %}
+        <a href="{{ image.url }}">{% thumbnail image.image 'cms_homepage' %}</a>
+    {% else %}
+        {% thumbnail image.image 'cms_homepage' %}
+    {% endif %}
+    </li>
+{% endfor %}
+</ol>
+<div class="carousel-navigation"></div>
+</div>
+
+<script type="text/javascript">
+
+(function () {
+
+    function init() {
+        $('#carousel').cycle({
+            fx: 'fade',
+            speed: 1000,
+            timeout: 10000,
+            pauseOnHover: true,
+            random: false,
+            pager: '.carousel-navigation',
+            pagerActiveClass: 'selected',
+            pagerTemplate: '<a href="#"></a>',
+            next: '.carousel-next',
+            prev: '.carousel-prev',
+            slides: '> ol > li'
+        });
+    }
+
+    jQuery(init);
+
+}());
+
+</script>
+
+
+{% endblock breadcrumbs %}
+
+
+{% block share %}
+{% endblock share %}
+
+
+{% block page %}
+
+<article class="home">
+
+
+
+<div class="twocol">
+<h1>{{ page.name }}</h1>
+{{ page.body|safe }}
+</div>
+
+
+
+<div class="twocol home-featured">
+
+<h2>Featured Products</h2>
+
+<div class="home-featured-panel first">
+<a href="/catalogue/category/cap-fire-resistant-coatings/3/">
+    <img src="{% static 'common/images/homepage/home-product-3.png' %}" alt="" />
+    <h3>Fire Resistant Coatings</h3>
+    <p>
+    CAP clear coatings for wood have undergone extensive testing to ASTM E84 on natural wood substrates, achieving excellent Class A results which are certified and listed.
+    </p>
+</a>
+</div>
+
+
+<div class="home-featured-panel last">
+<a href="/catalogue/category/aspect-wall-protection/1/">
+    <img src="{% static 'common/images/homepage/home-product-1.png' %}" alt="" />
+    <h3>Wall Protection</h3>
+    <p>
+    Industrially strong and beautifully crafted, our hand rail, crash rail, and corner guard profiles raise the bar. Available in a wide range of material finishes and colors.
+    </p>
+</a>
+</div>
+
+
+</div>
+
+
+{% comment %}
+<!--
+<article class="featured">
+    <h3>Featured<br /> Products</h3>
+    <div class="carousel">
+    <div class="carousel-sliders">
+    <a href="#" class="controls left" data-action="slide-left"><img src="{% static 'common/icons/left-arrow.png' %}" /></a>
+    <a href="#" class="controls right" data-action="slide-right"><img src="{% static 'common/icons/right-arrow.png' %}" /></a>
+    </div>
+
+    <div class="carousel-stage" data-autoplay="false" data-time="3000">
+    <ol>
+    {% catalogue_featured_products %}
+    </ol>
+    </div>
+
+    </div>
+</article>
+
+<article class="featured">
+    <h3>Featured<br /> Projects</h3>
+
+    <div class="carousel">
+    <div class="carousel-sliders">
+    <a href="#" class="controls left" data-action="slide-left"><img src="{% static 'common/icons/left-arrow.png' %}" /></a>
+    <a href="#" class="controls right" data-action="slide-right"><img src="{% static 'common/icons/right-arrow.png' %}" /></a>
+    </div>
+
+    <div class="carousel-stage" data-autoplay="false" data-time="3000">
+    <ol>
+    {% blog_featured_entries %}
+    </ol>
+    </div>
+
+    </div>
+</article>
+-->
+{% endcomment %}
+
+
+</article>
+
+{% endblock page %}

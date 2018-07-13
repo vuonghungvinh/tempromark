@@ -1,0 +1,28 @@
+{% extends "catalogue/layout/base.html" %}
+
+
+{% block breadcrumbs %}
+<h4><a href="{% url 'catalogue-index' %}">Products</a></h4>
+{% endblock breadcrumbs %}
+
+
+{% block sub-navigation %}
+<h3>Categories</h3>
+<ul>
+    {% for c in categories %}
+        <li><a href="{% url 'catalogue-category-detail' slug=c.slug pk=c.pk %}">{{ c.name }}</a></li>
+    {% empty %}
+        <li><p>No Categories.</p></li>
+    {% endfor %}
+</ul>
+{% endblock sub-navigation %}
+
+
+{% block page %}
+
+<article>
+<h1>{% block title %}Product Index{% endblock title %}</h1>
+
+</article>
+
+{% endblock page %}

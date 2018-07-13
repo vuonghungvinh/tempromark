@@ -1,0 +1,46 @@
+{% extends "catalogue/layout/base.html" %}
+{% load animal3_thumbnail %}
+{% load catalogue_tags %}
+
+
+{% block meta_description %}
+<meta name="description" content="{{ document.meta_description }}" />
+{% endblock meta_description %}
+
+
+{% block title %}
+{{ document.meta_title }}
+{% endblock title%}
+
+
+{% block breadcrumbs %}
+<h4>
+<a href="{% url 'catalogue-index' %}">Products</a> /
+<a href="{% url 'catalogue-category-detail' category.slug category.pk %}">{{category.name }}</a> /
+{{ document_set.name }}
+</h4>
+{% endblock breadcrumbs %}
+
+
+{% block sub-navigation %}
+<h3>{{ category.name }}</h3>
+{% include 'catalogue/snippets/navigation.html' %}
+{% endblock sub-navigation %}
+
+
+
+{% block page %}
+
+
+<article>
+
+<h1>{{ document.name }}</h1>
+
+<section class="page-text">
+{{ document.body|safe }}
+</section>
+
+</article>
+
+
+{% endblock page %}

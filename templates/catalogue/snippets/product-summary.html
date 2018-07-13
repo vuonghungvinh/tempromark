@@ -1,0 +1,14 @@
+{% load animal3_thumbnail %}
+
+
+<a href="{% url 'catalogue-product-detail' slug=product.slug pk=product.pk %}">
+{% if product.cover_image %}
+    {% thumbnail product.cover_image 'product-thumbnail' alt=product.name %}
+{% endif %}
+<h4>{{ product.name }}</h4>
+
+<p>
+{% firstof product.excerpt|striptags|truncatewords:"20" product.description|striptags|truncatewords:"20" %}
+</p>
+
+</a>

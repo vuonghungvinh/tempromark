@@ -1,0 +1,99 @@
+
+.carousel {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel a:hover {
+    border: none;
+}
+
+.carousel-stage {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.carousel-stage ol {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+}
+
+.carousel-stage li {
+    float: left;
+    list-style: none outside none;
+    position: relative;
+    padding: 0;
+}
+
+.carousel-stage li img {
+    width: 100%;
+    height: auto;
+}
+
+.carousel-stage li a {
+    min-height: 325px;
+}
+
+/* Controls */
+
+.carousel-sliders {
+    position: absolute;
+    top: -25px;
+    right: 15px;
+    z-index: 100;
+}
+
+.carousel-sliders a.controls {
+    display: inline-block;
+    background: none;
+}
+
+.carousel-sliders a.controls:hover,
+.carousel-sliders a.controls:focus {
+    border: 0;
+    opacity: 0.8;
+}
+
+.carousel-sliders a.controls.left {
+    margin-right: 5px;
+}
+
+/* Navigation */
+
+.carousel-navigation {
+    float: right;
+    margin-right: 45px;
+}
+
+.carousel-navigation li {
+    float: left;
+    list-style: none outside none;
+}
+
+.carousel-navigation li a {
+    display: block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #e8e9e9;
+    background: #fff;
+    border-radius: 30px;
+    margin: 0 7px 0 0;
+}
+
+.carousel-navigation li.selected a {
+    text-decoration: none;
+    background: #d31b17;
+    border: 1px solid transparent;
+}
+
+.carousel-navigation a:hover {
+    background: #d31b17;
+    border: 1px solid transparent;
+}

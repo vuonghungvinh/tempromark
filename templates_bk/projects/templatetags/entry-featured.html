@@ -1,0 +1,14 @@
+{% load animal3_thumbnail %}
+
+
+<a href="{{ entry.get_absolute_url }}">
+{% if entry.cover_image %}
+    {% thumbnail entry.cover_image 'project-thumbnail' %}
+{% endif %}
+<h4>{{ entry.title }}</h4>
+<p>
+{{ entry.excerpt|truncatewords:25 }}
+</p>
+</a>
+
+

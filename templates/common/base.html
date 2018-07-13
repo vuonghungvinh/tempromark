@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% load cms_tags %}
+{% load catalogue_tags %}
+{% load blog_tags %}
+
+
+{% block header %}
+<hgroup>
+<h1><a href="/"><img src="{% static 'common/images/logo.png' %}" /></a></h1>
+<h2><span>p</span>&nbsp; 714.924.4330 &nbsp;&nbsp;<br /><span>e</span>&nbsp; {{ 'sales@tepromark.com'|email }}</h2><br style="clear:left;" />
+<!-- downloads to be added back in later -->
+<!-- <a href="/" class="download-catalogues no-print">Download Catalogues <img src="{% static 'common/icons/document.png' %}" /></a> -->
+</hgroup>
+{% endblock header %}
+
+
+{% block navigation %}
+<nav id="main-nav" class="no-print">
+<ul class="clearfix">
+    <li><a href="/">Home</a></li>
+    <li class="product-dropdown">
+        <a href="{% url 'catalogue-index' %}">Products</a>
+        {% catalogue_navigation %}
+    </li>
+<!--
+    <li>
+        <a href="{% url 'project_index' %}">Project Gallery</a>
+        {% blog_navigation %}
+    </li>
+    <li>
+        <a href="/support/">Product Support</a>
+        <ul>
+        {% section_page_navigation 'support' %}
+        </ul>
+    </li>
+-->
+    <li>
+        <a href="/about/">About</a>
+        <ul>
+        {% section_page_navigation 'about' %}
+        </ul>
+    </li>
+    <li><a href="/contact/">Contact</a></li>
+    <li class="search">
+    <form method="get" action="{% url 'catalogue-product-search' %}">
+    <input type="text" name="q" placeholder="Search Products" />
+    <input type="submit" value="" />
+    </form>
+    </li>
+</ul>
+</nav>
+{% endblock navigation %}
+
+
+{% block footer %}
+<footer class="no-print">
+<div class="fivecol first">
+    <h3>Products</h3>
+    {# template tag to render list of product categories? #}
+    {% catalogue_navigation_footer %}
+
+</div>
+
+
+
+<div class="fivecol second">
+<h3><a href="/about/">About</a></h3>
+<ul>
+{% section_page_navigation 'about' %}
+</ul>
+</div>
+
+<div class="fivecol third">
+    <h3>Contact</h3>
+    <ul>
+        <li>714.924.4330</li>
+        <li>{{ 'sales@tepromark.com'|email }}</li>
+    </ul>
+</div>
+
+<div class="fivecol fourth">
+&nbsp;
+</div>
+
+<div class="fivecol fifth">
+    <ul>
+    <li class="search">
+    <form method="get" action="{% url 'catalogue-product-search' %}">
+    <input type="text" name="q" placeholder="Search Products" />
+    <input type="submit" value="" />
+    </form>
+    </li>
+    <!-- downloads to be added back in later -->
+    <!--
+    <li><a href="/" class="download-catalogues">Download Catalogues <img src="{% static 'common/icons/document.png' %}" /></a></li>
+-->
+    </ul>
+</div>
+<br style="clear:both;" />
+</footer>
+{% endblock footer %}

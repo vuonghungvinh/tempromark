@@ -1,0 +1,18 @@
+{% extends "projects/layout/base.html" %}
+{% load blog_tags %}
+
+
+{% block page %}
+
+<article>
+
+<h1>Project Gallery</h1>
+
+<ul class="object-list clearfix">
+{% blog_latest_entries limit=10 %}
+</ul>
+
+</article>
+
+
+{% endblock page %}

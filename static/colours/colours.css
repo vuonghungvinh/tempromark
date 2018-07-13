@@ -1,0 +1,32 @@
+/**************************************
+ Styles for the Colours app
+ **************************************/
+
+article h3 {
+    clear: left;
+}
+
+ul.colour-swatch {
+    padding-left: 0;
+    list-style: none outside none;
+}
+
+ul.colour-swatch li {
+    width: 22.85%;
+    float: left;
+    margin: 0 1.9% 2.45% 0;
+    border: 1px solid #efefee;
+}
+
+ul.colour-swatch li img {
+    width: 100%;
+    height: auto;
+}
+
+ul.colour-swatch li:nth-of-type(4n+4) {
+    margin-right: 0;
+}
+
+ul.colour-swatch li p {
+    margin: 10px;
+}

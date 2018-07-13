@@ -1,0 +1,90 @@
+
+/* tweaks to the carousel that's on the category detail paige */
+
+div.carousel {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+div.carousel div.carousel-navigation {
+    margin-right: 0;
+}
+
+
+/* Product Detail Page */
+
+article.product-detail {
+    width: 68%;
+    float: left;
+    margin-top: -18px;
+}
+
+article.product-detail h1 {
+    font-size: 26px;
+}
+
+article.product-detail div.gallery {
+    margin-bottom: 20px;
+}
+
+article.product-detail div.description {
+    float: left;
+    width: 49%;
+    margin-right: 8.5%;
+}
+
+article.product-detail div.description ul {
+    padding-left: 15px;
+}
+
+article.product-detail div.downloads {
+    float: left;
+    width: 42.5%;
+    margin-right: 0;
+}
+
+article.product-detail div.downloads {
+    margin-right: 0;
+}
+
+article.product-detail div.downloads p {
+    text-align: right;
+    margin: 0;
+}
+
+/* Color ranges ul */
+
+article.product-detail div.description ul.colour-ranges {
+    list-style: none outside none;
+    padding-left: 0;
+}
+
+article.product-detail ul.colour-ranges li {
+    float: left;
+}
+
+article.product-detail ul.colour-ranges li a,
+.colour-range-popup h2 a {
+    display: block;
+    background: #4d4e4f;
+    padding: 5px;
+    margin-right: 5px;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    line-height: 110%;
+}
+
+.colour-range-popup h2 a {
+    float: left;
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+article.product-detail ul.colour-ranges li a:hover,
+article.product-detail ul.colour-ranges li a:focus,
+.colour-range-popup h2 a:hover,
+.colour-range-popup h2 a:focus {
+    text-decoration: none;
+    background: #d81e05;
+}

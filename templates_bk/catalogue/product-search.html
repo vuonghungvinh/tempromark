@@ -1,0 +1,27 @@
+{% extends "catalogue/layout/base.html" %}
+
+{% block page %}
+
+<h1>Search Results:</h1>
+<hr />
+<p>Searching for: <strong>{{ query }}</strong></p>
+
+{% include 'catalogue/snippets/product-pagination.html' %}
+<br style="clear: left;" />
+<ul class="object-list clearfix">
+{% for product, count in products %}
+    <li>
+        {% include 'catalogue/snippets/product-summary.html' %}
+    </li>
+{% empty %}
+    <li class="empty">
+        <p>No Products Found.</p>
+    </li>
+{% endfor %}
+</ul>
+
+<br style="clear: left;" />
+{% include 'catalogue/snippets/product-pagination.html' %}
+<br style="clear: left;" />
+
+{% endblock page %}

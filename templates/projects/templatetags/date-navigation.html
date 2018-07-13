@@ -1,0 +1,11 @@
+
+{% for date in dates %}
+    {% for value in date %}
+        {% if forloop.counter0 == 0 %}
+            <li><a href="{% url 'blog-archive-year' value.date.year %}">{{ value|date:"Y" }}</a></li>
+        {% endif %}
+        {% if current_year|date:"Y" ==  value|date:"Y" and forloop.counter0 != 0 %}
+            <li class="month"><a href="{% url 'blog-archive-month' value.date.year value.date.month %}">{{ value|date:"F" }}</a></li>
+        {% endif %}
+    {% endfor %}
+{% endfor %}

@@ -1,0 +1,31 @@
+
+#carousel li {
+    list-style: none;
+}
+
+#carousel .carousel-navigation {
+    float: right;
+    margin-right: 45px;
+}
+
+#carousel .carousel-navigation a {
+    display: block;
+    float: left;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #e8e9e9;
+    background: #fff;
+    border-radius: 30px;
+    margin: 0 7px 0 0;
+}
+
+#carousel .carousel-navigation a.selected  {
+    text-decoration: none;
+    background: #d31b17;
+    border: 1px solid transparent;
+}
+
+#carousel .carousel-navigation a:hover {
+    background: #d31b17;
+    border: 1px solid transparent;
+}

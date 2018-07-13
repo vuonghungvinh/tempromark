@@ -1,0 +1,29 @@
+{% load animal3_thumbnail %}
+
+{% for range in colour_ranges %}
+
+<div class="popup hidden colour-range-popup" id="colour-popup-{{ range.id }}">
+<div class="popup-inner">
+
+<h2><a>{{ range.symbol }}</a>&nbsp;{{ range.name }}</h2>
+{{ range.description|safe }}
+<ul class="colour-swatch">
+{% for colour in range.colours.all %}
+    {% if colour.image %}
+    <li>
+    {% thumbnail colour.image 'colour-square' %}
+    <p>{{ colour.name }}</p>
+    </li>
+    {% endif %}
+{% empty %}
+    <li><p><em>Range has no colors.</em></p></li>
+{% endfor%}
+</ul>
+
+<br style="clear: left;" />
+
+<a class="popup-close" href="#"><img src="{% static 'common/images/close.png' %}" /></a>
+</div>
+</div>
+
+{% endfor %}

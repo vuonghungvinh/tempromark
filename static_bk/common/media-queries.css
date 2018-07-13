@@ -1,0 +1,607 @@
+
+/***********************************************************************
+ * Media queries for responsive design. Useful links for finding device
+ * resolutions, effective viewport dimensions and media features:
+ *
+ * http://bjango.com/articles/min-device-pixel-ratio/
+ * http://responsejs.com/labs/dimensions/
+ * https://developer.mozilla.org/en/docs/CSS/Media_queries
+ * http://en.wikipedia.org/wiki/List_of_displays_by_pixel_density
+ * http://members.ping.de/~sven/dpi.html
+ *
+ * Here's a handy quick list of physical screen resolutions and the
+ * pixel ratio (dppx) for the some common devices, along with their
+ * logical resolution. This illustrates some of the boundaries we must
+ * work within when making sites 'responsive'.
+ *
+ * Samsung Galaxy S: 480x800 @ 1 = 480x800
+ * Samsung Galaxy S4: 1080x1920 @ 3 = 360x640
+ * Samsung Galaxy 10.1: 800x1280 @ 1 = 800x1280
+ * Samsung Galaxy Note: 800x1280 @ 2 = 400x640
+ * Samsung Galaxy Note II: 720x1280 @ 2 = 360x640
+ * Samsung Galaxy Nexus: 720x1280 @ 2 = 360x640
+ * Google Nexus 4: 768x1280 @ 2 = 384x640
+ * Google Nexus 7: 800x1280 @ 1.325 = 603x966
+ * Google Nexus 10: 1600x2560 @ 2 = 800x1280
+ * Apple iPhone 4, 4S: 640x960 @ 2 = 320x480
+ * Apple iPhone 5: 640x1136 @ 2 = 320x568
+ * Apple iPad 1, 2: 768x1024 @ 1 = 768x1024
+ * Apple iPad 3, 4: 1536x2048 @ 2 = 768x1024
+ * Bedove HY5001 (MTK6589 Device): 720x1280 @ 2: 360x640
+ **********************************************************************/
+
+
+/***********************************************************************
+ * Seeing as a lot of devices have displays that have a
+ * pixel density greater than one, we should swap out logos and nav
+ * elements for higher res versions. This query targets those devices
+ * accordingly and swaps out background images for high res ones
+ * Very few devices have a pixel ratio great than 3, but this will need
+ * to be taken into consideration at some point.
+ * ********************************************************************/
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+       only screen and (min--moz-device-pixel-ratio: 2),
+       only screen and (min-device-pixel-ratio: 2),
+       only screen and (min-resolution: 2dppx) {
+
+
+
+}
+
+
+/* Up to 1280px, high res tablets (Nexus 10), some desktops/laptops */
+
+@media only screen and (max-width: 1280px) {
+
+
+
+}
+
+
+/* Up to 1024px, landscape iPads, old computers */
+
+@media only screen and (max-width: 1024px) {
+
+
+
+}
+
+
+/* 800px wide, includes the Nexus 10 in portrait and maybe some other large
+ * tablets. These queries should be fluid so that only minor adjustments
+ * are needed at 768px. */
+
+@media only screen and (max-width: 800px) {
+
+    section#breadcrumbs div.slideshow {
+        height: 335px;
+    }
+
+    h4.share a:first-of-type {
+        display: none;
+    }
+
+    section#content,
+    header#header hgroup,
+    nav#main-nav ul,
+    section#breadcrumbs {
+        padding: 0 3.5%;
+    }
+
+    section#content aside#sub-nav {
+        padding: 0 1% 0 3.5%;
+        width: 18.95%;
+    }
+
+    section#content aside#related {
+        width: 22.5%;
+    }
+
+    footer {
+        padding: 3.5%;
+    }
+
+    header#header hgroup h1 {
+        width: 265px;
+        height: auto;
+    }
+
+    header#header hgroup h1 img {
+        width: 100%;
+        height: auto;
+    }
+
+    header#header hgroup h2 {
+        font-size: 13px;
+    }
+
+    header#header hgroup a.download-catalogues {
+        margin-top: 55px;
+    }
+
+    nav#main-nav {
+        margin-top: 10px;
+    }
+
+    nav#main-nav ul li {
+        margin: 0 15px 0 0;
+    }
+
+    nav#main-nav ul li.search {
+        width: auto;
+    }
+
+    nav#main-nav ul li.search input[type="text"] {
+        width: 115px;
+    }
+
+
+    /* Styles on the homepage */
+
+    section#content article.featured:first-child {
+        margin-right: 4%;
+    }
+
+    section#content article.featured h3 br {
+        display: block;
+    }
+
+
+    article div.gallery {
+        height: 394px;
+    }
+
+
+    /* Product details */
+
+    section#content article.product-detail {
+        width: 100%;
+    }
+
+    section#content article.product-detail div.gallery {
+        width: auto;
+    }
+
+    aside#related {
+        display: none; /* hidden for now cause I don't know what to do with it */
+    }
+
+
+    /* Object list */
+
+    ul.object-list li {
+        margin: 0 2.5% 2.5% 0;
+    }
+
+
+    /* Project details */
+
+    section#content article.project-detail {
+        width: 100%;
+    }
+
+    section.page-text {
+        width: 60%;
+    }
+
+    div.popup-inner {
+        width: 87.5%;
+        max-width: 700px;
+        padding: 3.25%;
+        margin: 3%;
+    }
+
+
+    ul.object-list li a {
+        min-height: 365px;
+    }
+
+}
+
+
+/* 768px wide, all iPads in portrait, including the iPad mini! */
+
+@media only screen and (max-width: 768px) {
+
+    section#breadcrumbs div.slideshow {
+        height: 335px;
+    }
+
+    section#content div.gallery {
+        width: auto;
+    }
+
+
+    ul.object-list li a {
+        min-height: 380px;
+    }
+
+}
+
+
+/* Up to 640px wide in landscape... */
+
+@media only screen and (max-width: 640px) {
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h3 {
+        font-size: 14px;
+    }
+
+    section#breadcrumbs div.slideshow {
+        height: 265px;
+    }
+
+    header#header hgroup {
+        height: auto;
+        text-align: center;
+    }
+
+    header#header hgroup h1 {
+        float: none;
+        margin: 0 auto;
+    }
+
+    header#header hgroup h2 {
+        float: none;
+        margin: 15px 0;
+    }
+
+    header#header hgroup a.download-catalogues {
+        margin-top: 0;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+
+    /* Navigation */
+
+    nav#main-nav {
+        margin-top: 20px;
+    }
+
+    nav#main-nav ul {
+        text-align: center;
+    }
+
+    nav#main-nav ul li {
+        margin-right: 1.35%;
+        padding-bottom: 0;
+
+        float: none;
+        display: inline-block;
+    }
+
+    nav#main-nav ul li a {
+        padding: 10px 5px 5px 5px;
+        font-size: 16px;
+    }
+
+    nav#main-nav ul li.search {
+        float: none;
+        clear: left;
+        margin: 15px auto;
+        width: 85%;
+        text-align: left;
+    }
+
+    nav#main-nav ul li.search form input[type="text"] {
+        width: 96%;
+    }
+
+    nav#main-nav ul li.product-dropdown ul {
+        width: 100%;
+    }
+
+    nav#main-nav ul li.product-dropdown ul li {
+        float: left;
+        width: 20%;
+        padding: 2.4%;
+        border-right: 1px solid #e8e9e9;
+        max-width: 20%;
+    }
+
+      nav#main-nav ul li.product-dropdown ul li:nth-of-type(5) {
+        clear: left;
+    }
+
+    nav#main-nav ul li.product-dropdown ul li a.category-nav-image {
+        display: none;
+    }
+
+    article.home div.twocol {
+        width: auto;
+        margin-left: 0;
+    }
+
+    section#content article.featured h3 br {
+        display: none;
+    }
+
+    section.page-text {
+        width: auto;
+    }
+
+    /* object list */
+
+    ul.object-list li {
+        width: 47%;
+    }
+
+    ul.object-list li:nth-of-type(2n+2) {
+        margin-right: 0;
+    }
+
+    ul.object-list li:nth-of-type(3n+3) {
+        margin: 0 2.5% 2.5% 0;
+    }
+
+    /* the footer */
+
+    footer {
+        height: auto;
+    }
+
+    footer div.fivecol:nth-of-type(1),
+    footer div.fivecol:nth-of-type(2),
+    footer div.fivecol:nth-of-type(3),
+    footer div.fivecol:nth-of-type(4),
+    footer div.fivecol:nth-of-type(5) {
+        width: 24%;
+        margin-right: 1%;
+    }
+
+    footer div.fivecol:nth-of-type(5) {
+        display: none;
+    }
+
+
+    /* gallery */
+
+    section#content article div.gallery {
+        height: 354px;
+    }
+
+    section#content article div.gallery div.gallery-stage {
+        height: 290px;
+    }
+
+}
+
+
+/* Up to 480px, this will match some phablety devices in portrait, but it
+ * mainly applies to iPhones (except 5th gen) in landscape. High res
+ * Androids will match this in portrait. Most styles here are here for
+ * the portrait view so effectively, the landscape view and portrait view
+ * will be the same on iPhones. Shift these queries down to 360px to make
+ * them only applicable to portrait views. */
+
+@media only screen and (max-width: 480px) {
+
+    section#breadcrumbs {
+        margin-bottom: 15px;
+    }
+
+    section#breadcrumbs h4.share {
+        display: none;
+    }
+
+    section#breadcrumbs div.slideshow {
+        height: 200px;
+    }
+
+    nav#main-nav ul li {
+        padding-bottom: 0;
+    }
+
+    nav#main-nav ul li.search-form input[type="text"] {
+        width: 93%;
+    }
+
+    section#content {
+        width: 93%; /* has 3.5% padding either side */
+    }
+
+    footer ul li.search,
+    footer a.download-catalogues {
+        display: none;
+    }
+
+    nav#main-nav ul li.search {
+        margin: 10px 0;
+    }
+
+    nav#main-nav ul li.search form input[type="text"] {
+        width: 90%;
+    }
+
+
+    nav#main-nav ul li.product-dropdown ul li {
+        float: left;
+        width: 45%;
+        padding: 2%;
+        border-right: 1px solid #e8e9e9;
+        max-width: 45%;
+    }
+
+    nav#main-nav ul li.product-dropdown ul li:nth-of-type(2n+2) {
+        border-right: none;
+    }
+
+    nav#main-nav ul li.product-dropdown ul li:nth-of-type(3) {
+        clear: left;
+    }
+
+    /* the asides */
+
+    aside#sub-nav {
+        float: none;
+        width: auto;
+        margin-bottom: 20px;
+        padding: 0 3.5%;
+    }
+
+    /* list views */
+
+    ul.object-list li {
+        width: auto;
+        float: none;
+    }
+
+    ul.object-list li a img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* le detail */
+
+    section#content article.product-detail,
+    section#content article.project-detail {
+        margin-top: 0;
+    }
+
+    section#content article.project-detail div.gallery {
+        margin-bottom: 0;
+    }
+
+    section#content article.product-detail div.description {
+        width: auto;
+        float: none;
+        margin-right: 0;
+    }
+
+    section#content article.product-detail div.downloads {
+        display: none;
+    }
+
+
+    /* gallery */
+
+    section#content article div.gallery {
+        height: 360px;
+    }
+
+    section#content article div.gallery div.gallery-stage {
+        height: 295px;
+    }
+
+    ul.page-images {
+        display: none;
+    }
+
+}
+
+
+/* Up to 360px. Not many phones match this, but the Galaxy S4 does, as
+ * will some 'phablety' devices (Galaxy Note) and my strange Chinese
+ * MediaTek device */
+
+@media only screen and (max-width: 360px) {
+
+    header#header hgroup h2 br {
+        display: block;
+    }
+
+    section#breadcrumbs div.slideshow {
+        height: 145px;
+    }
+
+    footer div.fivecol:nth-of-type(1),
+    footer div.fivecol:nth-of-type(2),
+    footer div.fivecol:nth-of-type(3),
+    footer div.fivecol:nth-of-type(4),
+    footer div.fivecol:nth-of-type(5) {
+        width: auto;
+        margin-right: 0;
+        float: none;
+        text-align: center;
+    }
+
+    footer div.fivecol:nth-of-type(5) {
+        display: none;
+    }
+
+    ul.page-images {
+        display: none;
+    }
+
+    section#content article.product-detail div.description,
+    section#content article.product-detail div.downloads {
+        float: none;
+        width: auto;
+        margin: 0;
+    }
+
+    article.home div.twocol article.featured {
+        float: none;
+        width: auto;
+        margin: 20px 0 0 0;
+    }
+
+    section#content article.home div.twocol article.featured:first-child {
+        margin-right: 0;
+    }
+
+    article.home div.twocol div.home-featured-panel {
+        width: auto;
+        margin-left: 0;
+        padding: 0 15px;
+    }
+
+    /* gallery */
+
+    section#content article div.gallery {
+        height: 272px;
+    }
+
+    section#content article div.gallery div.gallery-stage {
+        height: 222px;
+    }
+
+}
+
+
+/* Up to 320px. iPhones of all flavour in portrait. Probably older Android
+ * devices, but this has yet to be verified */
+
+@media only screen and (max-width: 320px) {
+
+    /* disable webkit text size adjust (for iPhone) */
+    html {
+        -webkit-text-size-adjust: none;
+    }
+
+    header#header h1 {
+        margin-top: 10px;
+    }
+
+    header#header h2 {
+
+    }
+
+    ul#main-nav li {
+        float: none;
+        margin: 10px 0px;
+    }
+
+    form fieldset {
+        padding: 35px 20px;
+    }
+
+
+    /* gallery */
+
+    section#content article div.gallery {
+        height: 244px;
+    }
+
+    section#content article div.gallery div.gallery-stage {
+        height: 198px;
+    }
+
+}
+

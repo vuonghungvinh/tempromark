@@ -1,0 +1,32 @@
+{% extends "common/base.html" %}
+
+
+{% block meta_description %}
+<meta name="description" content="{{ page.meta_description }}" />
+{% endblock meta_description %}
+
+
+{% block title %}
+{{ page.meta_title }}
+{% endblock title%}
+
+
+{% block breadcrumbs %}
+<h4>{{ page.name }}</h4>
+{% endblock breadcrumbs %}
+
+
+{% block share %}
+{% endblock share %}
+
+
+{% block page %}
+
+<article class="contact">
+<div class="twocol">
+<h1>{{ page.name }}</h1>
+{{ page.body|safe }}
+</div>
+</article>
+
+{% endblock page %}

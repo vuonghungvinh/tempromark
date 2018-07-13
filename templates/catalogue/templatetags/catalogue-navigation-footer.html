@@ -1,0 +1,12 @@
+
+<ul>
+{% for category in categories %}
+{% if category.pk == 1 %}
+    <li>
+        <a href="{% url 'catalogue-category-detail' category.slug category.pk %}">{{ category.name }}</a>
+    </li>
+{% endif %}
+{% empty %}
+    <li><em>No Categories.</em></li>
+{% endfor %}
+</ul>

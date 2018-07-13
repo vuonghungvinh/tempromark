@@ -1,0 +1,146 @@
+{% extends "catalogue/layout/base.html" %}
+{% load animal3_thumbnail %}
+{% load catalogue_tags %}
+
+
+{% block html_head %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'gallery/gallery.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'slide-viewer/slide-viewer.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'colours/colours.css' %}" type="text/css" />
+<script type="text/javascript" src="{% static 'gallery/gallery.js' %}"></script>
+<script type="text/javascript" src="{% static 'slide-viewer/slide-viewer.js' %}"></script>
+<script type="text/javascript" src="{% static 'common/popup.js' %}"></script>
+{% endblock html_head %}
+
+
+{% block breadcrumbs %}
+<h4>
+<a href="{% url 'catalogue-index' %}">Products</a> /
+<a href="{% url 'catalogue-category-detail' category.slug category.pk %}">{{ category.name }}</a> /
+<a href="{% url 'catalogue-sub-category-detail' category.slug sub_category.slug sub_category.pk %}">{{ sub_category.name }}</a>
+</h4>
+{% endblock breadcrumbs %}
+
+
+{% block sub-navigation %}
+<h3>{{ category.name }}</h3>
+{% include 'catalogue/snippets/navigation.html' %}
+{% endblock sub-navigation %}
+
+
+{% block page %}
+
+<article class="product-detail">
+<h1>{% block title %}{{ product.name }}{% endblock title %}</h1>
+
+{% if images or product.cover_image %}
+
+<div class="gallery">
+    <!-- Main Gallery Image Stage -->
+    <div class="gallery-stage">
+    <a class="gallery-caption-toggle" data-alt-text="caption +" href="#">caption - </a>
+    </div>
+
+    <!-- Gallery Data -->
+    <ul class="gallery-data" data-page-limit="5" data-caption-state="closed">
+
+    {% if product.cover_image %}
+        <li>
+            {% thumbnail product.cover_image 'product-gallery-thumbnail' class="gallery-thumbnail" %}
+            <div class="gallery-slide">
+            {% thumbnail product.cover_image 'product-gallery' %}
+            </div>
+        </li>
+    {% endif %}
+
+    {% for image in images %}
+        <li>
+            {% thumbnail image.image 'product-gallery-thumbnail' class="gallery-thumbnail" %}
+            <div class="gallery-slide">
+            {% thumbnail image.image 'product-gallery' %}
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+
+    <!-- Gallery Page Navigation -->
+    <div class="gallery-pages"></div>
+
+</div> <!-- /gallery -->
+
+{% endif %}
+
+
+{% colour_popups colour_ranges %}
+
+    <div class="tab-content">
+        <div class="description">
+            <h4 class="tab-header">
+                <a href="#" class="tab-link tab-first active" data-tab="description">Product Description</a>
+                <a href="#" class="tab-link" data-tab="download">Downloads</a>
+            </h4>
+            <div class="tab-panel active" id="description">
+                <div class="wysiwyg">
+                    {{ product.description|safe }}
+                </div>
+
+                {% if colour_ranges %}
+                    <h4>Color Options</h4>
+                    <ul class="colour-ranges">
+                    {% for range in colour_ranges %}
+                        <li><a class="popup-open" data-target="colour-popup-{{ range.id }}" href="#" title="{{ range.name }}">{{ range.symbol }}</a></li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                {% colour_popups colour_ranges %}
+            </div>
+            <div class="tab-panel" id="download">
+                <div class="downloads no-print">
+                    <p>select to download</p>
+                    {% include 'catalogue/snippets/select-files.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".tab-link").click(function (e) {
+                e.preventDefault();
+                var self = $(this);
+                $(".tab-link").each(function (){
+                    $(this).removeClass("active");
+                });
+
+                self.addClass("active");
+                $(".tab-panel").each(function (){
+                    $(this).removeClass("active");
+                });
+                $("#" + self.attr("data-tab")).addClass("active");
+            });
+        });
+    </script>
+
+
+</article>
+
+
+<aside id="related">
+    <h3>Related Products</h3>
+
+    <div class="slide-viewer">
+
+    <div class="slide-viewer-controls">
+    <a class="up" data-action="slide-up" href="#"></a>
+    <a class="down" data-action="slide-down" href="#"></a>
+    </div>
+
+    <div class="slide-viewer-stage">
+    {% related_products product %}
+    </div>
+
+    </div>
+</aside>
+
+{% endblock page %}

@@ -1,0 +1,21 @@
+{% extends "projects/layout/base.html" %}
+{% load blog_tags %}
+
+
+{% block page %}
+
+<article>
+
+<h1>Archive: {% firstof year|date:'Y' month|date:'Y - F' %}</h1>
+<hr />
+
+<ul class="latest-entries">
+{% for entry in object_list %}
+<li>{% blog_entry_summary entry %}</li>
+{% endfor %}
+</ul>
+
+</article>
+
+
+{% endblock page %}

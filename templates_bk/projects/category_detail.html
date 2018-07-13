@@ -1,0 +1,23 @@
+{% extends "projects/layout/base.html" %}
+{% load blog_tags %}
+
+
+{% block page %}
+
+<article>
+
+<h1>Project Gallery: {{ category.name }}</h1>
+
+<ul class="object-list clearfix">
+
+{% for entry in entries %}
+    <li>{% blog_entry_summary entry %}</li>
+{% empty %}
+    <li><em>No entries.</em></li>
+{% endfor %}
+</ul>
+
+</article>
+
+
+{% endblock page %}

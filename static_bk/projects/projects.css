@@ -1,0 +1,17 @@
+
+
+/* Product Detail Page */
+
+article.project-detail {
+    width: 68%;
+    float: left;
+    margin-top: -18px;
+}
+
+article.project-detail h1 {
+    font-size: 26px;
+}
+
+article.project-detail div.gallery {
+    margin-bottom: 20px;
+}

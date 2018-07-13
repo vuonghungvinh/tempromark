@@ -1,0 +1,20 @@
+{% load animal3_thumbnail %}
+
+<ul>
+{% for p in related_products %}
+    <li>
+        <a href="{% url 'catalogue-product-detail' p.slug p.pk %}" class="related">
+        {% if p.cover_image %}
+            {% thumbnail p.cover_image 'product-related' alt=p.name %}
+        {% endif %}
+        <p>
+        {{ p.name }}
+        </p>
+        </a>
+    </li>
+{% empty %}
+    <li>
+        <p><em>No related products.</em></p>
+    </li>
+{% endfor %}
+</ul>

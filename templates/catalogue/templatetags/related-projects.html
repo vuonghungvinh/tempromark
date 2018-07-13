@@ -1,0 +1,20 @@
+{% load animal3_thumbnail %}
+
+<ul>
+{% for p in related_projects %}
+    <li>
+        <a href="{% url 'project_entry_detail' p.slug %}" class="related">
+        {% if p.cover_image %}
+            {% thumbnail p.cover_image 'small' alt=p.title %}
+        {% endif %}
+        <p>
+        {{ p.title }}
+        </p>
+        </a>
+    </li>
+{% empty %}
+    <li>
+        <p><em>No related projects.</em></p>
+    </li>
+{% endfor %}
+</ul>

@@ -1,0 +1,81 @@
+{% extends "projects/layout/base.html" %}
+{% load animal3_thumbnail %}
+{% load blog_tags %}
+
+
+{% block html_head %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'gallery/gallery.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'projects/projects.css' %}" type="text/css" />
+<script type="text/javascript" src="{% static 'gallery/gallery.js' %}"></script>
+{% endblock html_head %}
+
+
+{% block page %}
+
+<article class="project-detail">
+
+<h1>{% block title %}{{ entry.title }}{% endblock title %}</h1>
+
+{% if images or entry.cover_image %}
+    <div class="gallery">
+
+    <!-- Main Gallery Image Stage -->
+    <div class="gallery-stage">
+    <a class="gallery-caption-toggle" data-alt-text="caption +" href="#">caption - </a>
+    </div>
+
+    <!-- Gallery Data -->
+    <ul class="gallery-data" data-page-limit="5" data-caption-state="closed">
+    {% if entry.cover_image %}
+        <li>
+        {% thumbnail entry.cover_image 'project-gallery-thumbnail' class="gallery-thumbnail" %}
+        <div class="gallery-slide">
+        {% thumbnail entry.cover_image 'project-gallery' %}
+        {% if entry.image_caption %}
+            <div class="gallery-caption">
+                {{ entry.image_caption|safe }}
+            </div>
+        {% endif %}
+        </div>
+        </li>
+    {% endif %}
+
+    {% for image in images %}
+        <li>
+        {% thumbnail image.image 'project-gallery-thumbnail' class="gallery-thumbnail" %}
+        <div class="gallery-slide">
+        {% thumbnail image.image 'project-gallery' %}
+        {% if image.caption %}
+            <div class="gallery-caption">
+                {{ image.caption|safe }}
+            </div>
+        {% endif %}
+        </div>
+        </li>
+    {% endfor %}
+    </ul>
+
+    <!-- Gallery Page Navigation -->
+    <div class="gallery-pages"></div>
+
+    </div> <!-- /gallery -->
+{% endif %}
+
+<br style="clear:both;" />
+
+<h4>Project Description</h4>
+{{ entry.body|safe }}
+
+</article>
+
+
+<aside id="related">
+<h3>Other Projects</h3>
+{% related_entries entry 2 %}
+</aside>
+
+{% endblock page %}
+
+{% block aside %}
+{% endblock aside %}

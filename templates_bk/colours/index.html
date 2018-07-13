@@ -1,0 +1,37 @@
+{% extends "common/base.html" %}
+{% load animal3_thumbnail %}
+
+{% block html_head %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'colours/colours.css' %}" />
+{% endblock html_head %}
+
+
+{% block breadcrumbs %}
+<h4>Color Options</h4>
+{% endblock breadcrumbs %}
+
+
+{% block page %}
+
+<article>
+<h1>Color Options</h1>
+{% for range in colour_ranges %}
+    <h3>{{ range.name }}</h3>
+    {{ range.description|safe }}
+    <a id="{{ range.slug }}-{{ range.id }}"></a>
+    <ul class="colour-swatch">
+    {% for colour in range.colours.all %}
+        <li>
+        {% thumbnail colour.image 'colour-square' %}
+        <p>{{ colour.name }}</p>
+        </li>
+    {% empty %}
+        <li><p><em>Range has no colors.</em></p></li>
+    {% endfor%}
+    </ul>
+    <br style="clear:both;" />
+{% endfor %}
+</article>
+
+{% endblock page %}

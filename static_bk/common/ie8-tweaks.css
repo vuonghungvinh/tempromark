@@ -1,0 +1,10 @@
+
+div.downloads ul li input[type="checkbox"] {
+    display: block;
+    float: right;
+    margin-top: 0;
+}
+
+div.downloads ul li input[type="checkbox"] + label {
+    display: none;
+}

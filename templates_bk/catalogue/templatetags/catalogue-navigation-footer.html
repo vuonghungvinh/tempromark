@@ -1,0 +1,10 @@
+
+<ul>
+{% for category in categories %}
+    <li>
+        <a href="{% url 'catalogue-category-detail' category.slug category.pk %}">{{ category.name }}</a>
+    </li>
+{% empty %}
+    <li><em>No Categories.</em></li>
+{% endfor %}
+</ul>

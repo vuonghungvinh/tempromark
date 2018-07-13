@@ -1,0 +1,11 @@
+{% load catalogue_tags %}
+
+{% for product in products %}
+    <li>
+        {% catalogue_product_featured product %}
+    </li>
+{% empty %}
+    <li>
+        <em>No featured products.</em>
+    </li>
+{% endfor %}

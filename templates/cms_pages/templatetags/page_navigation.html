@@ -1,0 +1,6 @@
+
+{% for page in pages %}
+{% if not page.name == 'Shipping' %}
+    <li><a href="{{ page.get_absolute_url }}">{{ page.name }}</a></li>
+{% endif %}
+{% endfor %}

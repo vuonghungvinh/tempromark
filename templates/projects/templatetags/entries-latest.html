@@ -1,0 +1,8 @@
+{% load blog_tags %}
+
+
+{% for entry in entries %}
+    <li>{% blog_entry_summary entry %}</li>
+{% empty %}
+    <li><em>No entries.</em></li>
+{% endfor %}

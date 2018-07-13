@@ -1,0 +1,17 @@
+{% if items %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_previous %}
+                <a href="?{{ page_previous }}">&larr;</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ products.number }} of {{ products.paginator.num_pages }}
+            </span>
+
+            {% if page_next %}
+                <a href="?{{ page_next }}">&rarr;</a>
+            {% endif %}
+        </span>
+    </div>
+{% endif %}
